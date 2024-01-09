@@ -9,7 +9,10 @@ import '@/app/globals.css';
 import { ClientOnly } from '@/app/components/ClientOnly';
 import { Navbar } from '@/app/components/navbar/Navbar';
 import { RegisterModal } from '@/app/components/modal/RegisterModal';
+import { LoginModal } from '@/app/components/modal/LoginModal';
 import { ToasterProvider } from '@/app/providers/ToasterProvider';
+
+import getCurrentUser from '@/app/actions/getCurrentUser';
 
 const font = Nunito({ subsets: ['latin'] });
 
@@ -22,14 +25,17 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-const RootLayout: FC<RootLayoutProps> = ({ children }) => {
+const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
+  const currentUser = await getCurrentUser();
+
   return (
     <html lang='en'>
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
+          <LoginModal />
           <RegisterModal />
-          <Navbar />
+          <Navbar currentUser={currentUser} />
         </ClientOnly>
         {children}
       </body>
