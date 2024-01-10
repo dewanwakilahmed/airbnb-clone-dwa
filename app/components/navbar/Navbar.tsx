@@ -8,6 +8,7 @@ import { Container } from '@/app/components/Container';
 import { Logo } from '@/app/components/navbar/Logo';
 import { Search } from '@/app/components/navbar/Search';
 import { UserMenu } from '@/app/components/navbar/UserMenu';
+import { Categories } from '@/app/components/navbar/Categories';
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
@@ -25,6 +26,7 @@ export const Navbar: FC<NavbarProps> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   );
 };
