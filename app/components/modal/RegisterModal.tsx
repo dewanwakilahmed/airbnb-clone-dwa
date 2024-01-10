@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { signIn } from 'next-auth/react';
 
 import axios from 'axios';
@@ -12,6 +12,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
 import { useRegisterModal } from '@/app/hooks/useRegisterModal';
+import { useLoginModal } from '@/app/hooks/useLoginModal';
 
 import { Modal } from '@/app/components/modal/Modal';
 import { Heading } from '@/app/components/Heading';
@@ -20,6 +21,7 @@ import { Button } from '@/app/components/Button';
 
 export const RegisterModal = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -44,6 +46,11 @@ export const RegisterModal = () => {
       .catch((error) => toast.error('Something Went Wrong!'))
       .finally(() => setIsLoading(false));
   };
+
+  const toggle = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [registerModal, loginModal]);
 
   const bodyContent = (
     <div className='flex flex-col gap-4'>
@@ -96,7 +103,7 @@ export const RegisterModal = () => {
           <div>Already have an account?</div>
           <div
             className='text-neutral-800 cursor-pointer hover:underline'
-            onClick={registerModal.onClose}
+            onClick={toggle}
           >
             Log in
           </div>
