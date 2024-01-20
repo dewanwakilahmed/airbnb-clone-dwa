@@ -10,6 +10,7 @@ import { ClientOnly } from '@/app/components/ClientOnly';
 import { Navbar } from '@/app/components/navbar/Navbar';
 import { RegisterModal } from '@/app/components/modal/RegisterModal';
 import { LoginModal } from '@/app/components/modal/LoginModal';
+import { RentModal } from '@/app/components/modal/RentModal';
 import { ToasterProvider } from '@/app/providers/ToasterProvider';
 
 import getCurrentUser from '@/app/actions/getCurrentUser';
@@ -33,6 +34,7 @@ const RootLayout: FC<RootLayoutProps> = async ({ children }) => {
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
+          <RentModal />
           <LoginModal />
           <RegisterModal />
           <Navbar currentUser={currentUser} />

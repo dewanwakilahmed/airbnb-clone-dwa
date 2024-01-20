@@ -33,7 +33,7 @@ export const ImageUpload: FC<ImageUploadProps> = ({ value, onChange }) => {
       {({ open }) => {
         return (
           <div
-            className='relative cursor-pointer hover:opactiy-70 transition border-dashed border-2 p-20 border-neutral-300 flex flex-col    justify-center items-center gap-4 text-neutral-600'
+            className='relative cursor-pointer hover:opactiy-70 transition border-dashed border-2 p-20 border-neutral-300 flex flex-col justify-center items-center gap-4 text-neutral-600'
             onClick={() => open?.()}
           >
             <TbPhotoPlus size={50} />

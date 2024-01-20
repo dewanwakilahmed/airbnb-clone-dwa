@@ -29,7 +29,7 @@ const url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const attribution =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-export const Map: FC<MapProps> = ({ center }) => {
+const Map: FC<MapProps> = ({ center }) => {
   return (
     <MapContainer
       className='h-[35vh] rounded-lg'
@@ -43,3 +43,5 @@ export const Map: FC<MapProps> = ({ center }) => {
     </MapContainer>
   );
 };
+
+export default Map;
